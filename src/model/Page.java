@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class Page {
     private String title;
     private String description;
-    private ArrayList<User> followers = new ArrayList<User>();
-    private ArrayList<Post> postsInPage = new ArrayList<Post>();
+    private ArrayList<User> followers = new ArrayList<>();
+    private ArrayList<Post> postsInPage = new ArrayList<>();
 
     public Page() {
         setTitle("default_title");
@@ -37,19 +37,11 @@ public class Page {
     }
 
     public void setTitle(String title) {
-        this.title = (title != null) ? title : "default_title";
+        this.title = (title != null && title.length() > 5 && title.length() < 50) ? title : "default_title";
     }
 
     public void setDescription(String description) {
-        this.description = (description != null) ? description : "default_description";
-    }
-
-    public void setFollowers(ArrayList<User> followers) {
-        this.followers = followers;
-    }
-
-    public void setPostsInPage(ArrayList<Post> postsInPage) {
-        this.postsInPage = postsInPage;
+        this.description = (description != null && description.length() > 5 && description.length() < 300) ? description : "default_description";
     }
 
     @Override
