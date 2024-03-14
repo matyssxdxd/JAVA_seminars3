@@ -6,6 +6,7 @@ import model.PostType;
 import java.util.ArrayList;
 
 public class BusinessUser extends User {
+    private String PVNNo;
     private ArrayList<Page> listOfPages = new ArrayList<>();
 
     public BusinessUser(String title, String password) {
@@ -20,13 +21,21 @@ public class BusinessUser extends User {
         setUsername();
     }
 
+    public String getPVNNo() {
+        return PVNNo;
+    }
+
     public ArrayList<Page> getListOfPages() {
         return listOfPages;
     }
 
+    public void setPVNNo(String PVNNo) {
+        this.PVNNo = (PVNNo != null && PVNNo.matches("[A-Z]{2}[0-9]{11}")) ? PVNNo : "defaultPVNNo";
+    }
+
     @Override
     public void setNameAndSurnameOrTitle(String nameAndSurnameOrTitle) {
-        super.nameAndSurnameOrTitle = (nameAndSurnameOrTitle != null && nameAndSurnameOrTitle.matches("[A-ZĒŪĪĻĶĢŠĀČŅ]{1}[a-zēūīļķģšāžčņ]+"))
+        super.nameAndSurnameOrTitle = (nameAndSurnameOrTitle != null && nameAndSurnameOrTitle.matches("[A-Za-z0-9%^+@=.,!]{3,50}"))
                 ? nameAndSurnameOrTitle : "defaultTitle";
     }
 
