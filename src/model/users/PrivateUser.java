@@ -41,11 +41,15 @@ public class PrivateUser extends User {
     }
 
     @Override
-    public void publishPost(PostType type, String msg) throws Exception {
+    public Post publishPost(PostType type, String msg) throws Exception {
         if (type == null || msg == null) throw new Exception("BOO");
 
-        if (type.equals(PostType.privatePost)) privatePosts.add(new Post(msg));
-        if (type.equals(PostType.publicPost)) publicPosts.add(new Post(msg));
+        Post newPost = new Post(msg);
+
+        if (type.equals(PostType.privatePost)) privatePosts.add(newPost);
+        if (type.equals(PostType.publicPost)) publicPosts.add(newPost);
+
+        return newPost;
     }
 
     public void followPrivateUser(User user) throws Exception {

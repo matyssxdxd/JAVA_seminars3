@@ -44,6 +44,17 @@ public class MainService {
         System.out.println(u6.getPublicPosts());
 
         System.out.println(u6.getFollowers());
+
+        try {
+            u7.createPage("Riepas ventpili", "pa leto jaunas rieps");
+            u7.createPostInPage("Atlaid jaunam vasar riepam", "Riepas ventpili");
+            u7.createPage("Riepas talsos", "pa leto jaunas rieps");
+            u7.createPostInPage("Atlaid jaunam vissezon riepam", "Riepas talsos");
+        } catch (Exception e) {
+            System.out.println();
+        }
+
+        System.out.println(u7.getListOfPages());
     }
 
 }
