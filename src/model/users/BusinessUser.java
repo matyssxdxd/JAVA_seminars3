@@ -9,15 +9,17 @@ public class BusinessUser extends User {
     private String PVNNo;
     private ArrayList<Page> listOfPages = new ArrayList<>();
 
-    public BusinessUser(String title, String password) {
+    public BusinessUser(String title, String password, String PVNNo) {
         super(password);
         setNameAndSurnameOrTitle(title);
+        setPVNNo(PVNNo);
         setUsername();
     }
 
     public BusinessUser() {
         super();
         setNameAndSurnameOrTitle("defaultTitle");
+        setPVNNo("defaultPVNNo");
         setUsername();
     }
 
@@ -35,7 +37,7 @@ public class BusinessUser extends User {
 
     @Override
     public void setNameAndSurnameOrTitle(String nameAndSurnameOrTitle) {
-        super.nameAndSurnameOrTitle = (nameAndSurnameOrTitle != null && nameAndSurnameOrTitle.matches("[A-Za-z0-9%^+@=.,!]{3,50}"))
+        super.nameAndSurnameOrTitle = (nameAndSurnameOrTitle != null && nameAndSurnameOrTitle.matches("[A-Za-z0-9%^+@=.,! ]{3,50}"))
                 ? nameAndSurnameOrTitle : "defaultTitle";
     }
 
@@ -52,5 +54,10 @@ public class BusinessUser extends User {
 
     public void createPostInPage(PostType type, String msg, String pageTitle) {
 
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", " + PVNNo;
     }
 }

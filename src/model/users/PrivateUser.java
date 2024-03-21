@@ -60,6 +60,6 @@ public class PrivateUser extends User {
 
     @Override
     public String toString() {
-        return super.toString() + super.nameAndSurnameOrTitle + "( " + getUsername() + " )";
+        return super.toString() + " " + (privatePosts.size() + publicPosts.size()) + " posts";
     }
 }

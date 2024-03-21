@@ -32,7 +32,7 @@ public abstract class User extends GuestUser implements IPostService {
     }
 
     public void setUsername() {
-        username = nameAndSurnameOrTitle + "_" + getGeneratedId();
+        username = nameAndSurnameOrTitle.toLowerCase().replace(" ", "_") + "_" + getGeneratedId();
     }
 
     public void setPassword(String password) {
@@ -53,6 +53,6 @@ public abstract class User extends GuestUser implements IPostService {
 
     @Override
     public String toString() {
-        return super.toString() + ":";
+        return super.toString() + ":" + nameAndSurnameOrTitle + "(" + username + ")";
     }
 }
